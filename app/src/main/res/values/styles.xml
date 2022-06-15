@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    /*
+    TEXT MAIN
+    */ --------------------------
+
+    <style name="textBody4" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:fontFamily">@font/cerapro_regular</item>
+    </style>
+
+    <style name="textBody3" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:fontFamily">@font/cerapro_regular</item>
+    </style>
+
+    <style name="textBody2" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:fontFamily">@font/cerapro_regular</item>
+    </style>
+
+    <style name="textBody1" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:fontFamily">@font/cerapro_regular</item>
+    </style>
+
+    <style name="textSub5" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    <style name="textSub4" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    <style name="textSub3" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    <style name="textSub2" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    <style name="textSub1" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    <style name="textH5" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:fontFamily">@font/cerapro_bold</item>
+    </style>
+
+    <style name="textH4" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:fontFamily">@font/cerapro_bold</item>
+    </style>
+
+    <style name="textH3" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:fontFamily">@font/cerapro_bold</item>
+    </style>
+
+    <style name="textH2" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
+        <item name="android:fontFamily">@font/cerapro_bold</item>
+    </style>
+
+    <style name="textH1" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">@dimen/_22ssp</item>
+        <item name="android:fontFamily">@font/cerapro_bold</item>
+    </style>
+
+
+</resources>
