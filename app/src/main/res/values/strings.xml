@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Morse Translator</string>
+
+    <string name="lorem_title">Lorem Ipsum</string>
+    <string name="lorem_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</string>
+
 </resources>
