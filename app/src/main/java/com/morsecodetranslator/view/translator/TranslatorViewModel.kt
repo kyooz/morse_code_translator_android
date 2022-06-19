@@ -24,11 +24,8 @@ class TranslatorViewModel : ViewModel() {
                 var translated = ""
 
                 val words = morseMessage.split(" ")
-                setLog("words array : $words")
                 words.forEach {
-                    setLog("input : $it")
                     val data = translatorData.checkMorseDataByCode(it)
-                    setLog("translated : $data")
                     translated += data
                 }
 
@@ -63,10 +60,6 @@ class TranslatorViewModel : ViewModel() {
 
         }
 
-    }
-
-    private fun setLog(msg: String) {
-        Log.e("Translator", msg)
     }
 
 }

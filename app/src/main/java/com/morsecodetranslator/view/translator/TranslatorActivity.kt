@@ -74,9 +74,4 @@ class TranslatorActivity : BaseActivity() {
         }
     }
 
-    private fun setLog(msg: String) {
-        Log.e("Translator", msg)
-    }
-
-
 }

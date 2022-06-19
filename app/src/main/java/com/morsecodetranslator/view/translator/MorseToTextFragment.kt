@@ -65,7 +65,6 @@ class MorseToTextFragment :
                 toast(getString(R.string.please_input_message))
             } else {
                 val data = message.dropLast(1)
-                setLog("message : $data")
                 viewModel.morseToTextTranslate(data)
             }
 
@@ -115,10 +114,6 @@ class MorseToTextFragment :
         )
         dialog.show(childFragmentManager, "dialog")
 
-    }
-
-    private fun setLog(msg: String) {
-        Log.e("MorseToText", msg)
     }
 
 }

@@ -50,7 +50,6 @@ class TextToMorseFragment :
                 }
 
                 is ViewState.Success -> {
-                    setLog("data : ${it.data}")
                     showMessageDialog(it.data)
                 }
                 is ViewState.Error -> {
@@ -69,10 +68,6 @@ class TextToMorseFragment :
         )
         dialog.show(childFragmentManager, "dialog")
 
-    }
-
-    private fun setLog(msg: String) {
-        Log.e("text_to_morse", msg)
     }
 
 }
