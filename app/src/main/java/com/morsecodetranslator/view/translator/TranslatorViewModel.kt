@@ -24,8 +24,11 @@ class TranslatorViewModel : ViewModel() {
                 var translated = ""
 
                 val words = morseMessage.split(" ")
+                setLog("words array : $words")
                 words.forEach {
+                    setLog("input : $it")
                     val data = translatorData.checkMorseDataByCode(it)
+                    setLog("translated : $data")
                     translated += data
                 }
 
@@ -38,7 +41,6 @@ class TranslatorViewModel : ViewModel() {
 
     }
 
-
     fun textToMorseTranslate(textMessage: String) {
 
         viewModelScope.launch {
@@ -49,7 +51,7 @@ class TranslatorViewModel : ViewModel() {
 
                 val messageArray = textMessage.toCharArray()
                 messageArray.forEach {
-                    val data = translatorData.checkMorseDataByChar(it)
+                    val data = translatorData.checkMorseDataByChar(it.uppercaseChar())
                     translated += if (translated.isEmpty()) data else " $data"
                 }
 
@@ -61,6 +63,10 @@ class TranslatorViewModel : ViewModel() {
 
         }
 
+    }
+
+    private fun setLog(msg: String) {
+        Log.e("Translator", msg)
     }
 
 }

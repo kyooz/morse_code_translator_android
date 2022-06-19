@@ -25,11 +25,14 @@
             >
 
             <EditText
+                android:id="@+id/edText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Start typing here..."
                 style="@style/inputPrimary"
+                android:fontFamily="@font/montserrat_semibold"
                 android:lineSpacingExtra="@dimen/_6ssp"
+                android:imeOptions="actionDone"
                 />
 
         </LinearLayout>

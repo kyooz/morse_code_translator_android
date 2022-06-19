@@ -52,11 +52,11 @@ class TranslatorData(
     fun checkMorseDataByChar(character: Char): String {
         return try {
             val result = getData().find {
-                character.equals(it.char!!.toUpperCase())
+                character.equals(it.char!!.uppercaseChar())
             }
             result?.code.toString()
         } catch (error: Exception) {
-            "#"
+            "?"
         }
     }
 
@@ -65,7 +65,7 @@ class TranslatorData(
             val result = getData().find {
                 code.equals(it.code)
             }
-            result?.char.toString().toLowerCase()
+            result?.char.toString().lowercase()
         } catch (error: Exception) {
             "?"
         }
