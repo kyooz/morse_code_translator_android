@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -51,7 +52,13 @@ dependencies {
     implementation "com.intuit.sdp:sdp-android:$dealscreen_version"
     implementation "com.intuit.ssp:ssp-android:$dealscreen_version"
 
-    // Coroutine
+    // coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
+
+    // arch component
+    def archLifecycleVersion = "2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$archLifecycleVersion"
 
 }

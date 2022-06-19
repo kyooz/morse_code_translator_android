@@ -7,6 +7,35 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/cerapro_medium</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="tabStyle">@style/AppTablayoutTheme</item>
+    </style>
+
+    <style name="AppThemeToolbar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="tabStyle">@style/AppTablayoutTheme</item>
+    </style>
+
+
+    /*
+    TAB LAYOUT MAIN
+    */ --------------------------
+
+
+    <style name="AppTablayoutTheme" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextAppearance">@style/TabLayoutStyle</item>
+    </style>
+
+    <style name="TabLayoutStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="fontFamily">@font/cerapro_medium</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
     </style>
 
     /*
@@ -95,6 +124,60 @@
         <item name="android:textColor">@color/textBlack</item>
         <item name="android:textSize">@dimen/_22ssp</item>
         <item name="android:fontFamily">@font/cerapro_bold</item>
+    </style>
+
+    /*
+    BUTTON MAIN
+    */ --------------------------
+
+    <style name="btnPrimary" parent="android:Widget.Button">
+        <item name="android:height">@dimen/_45sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    <style name="btnSecondary" parent="android:Widget.Button">
+        <item name="android:height">@dimen/_40sdp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:background">@drawable/btn_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/cerapro_medium</item>
+    </style>
+
+    /*
+    EDIT TEXT MAIN
+    */ --------------------------
+
+    <style name="inputPrimary" parent="android:Widget.EditText">
+        <item name="android:height">@dimen/_48sdp</item>
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:background">@null</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/cerapro_regular</item>
+        <item name="android:padding">@dimen/_15sdp</item>
+        <item name="android:layout_marginTop">@dimen/_6sdp</item>
+        <item name="android:gravity">top|start</item>
+    </style>
+
+    /*
+    DIALOG
+    */ --------------------------
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_rounded_top_white</item>
     </style>
 
 
