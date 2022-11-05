@@ -8,8 +8,10 @@ import com.morsecodetranslator.common.copyToClipboard
 import com.morsecodetranslator.databinding.DialogBottomTranslatedBinding
 import com.morsecodetranslator.view.base.BaseFragmentBottomDialog
 
-class TranslatedBottomDialog(val message: String, val isTextToMorse: Boolean)
-    : BaseFragmentBottomDialog<DialogBottomTranslatedBinding>(DialogBottomTranslatedBinding::inflate) {
+class TranslatedBottomDialog(val message: String, val isTextToMorse: Boolean) :
+    BaseFragmentBottomDialog<DialogBottomTranslatedBinding>(DialogBottomTranslatedBinding::inflate) {
+
+    lateinit var onClickItem: OnSelectedItemDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,10 +42,23 @@ class TranslatedBottomDialog(val message: String, val isTextToMorse: Boolean)
         }
 
         binding.btnFlashOn.setOnClickListener {
-            toast(getString(R.string.under_constructor))
+            onClickItem.onFlashMessage(message)
             dismiss()
         }
 
+    }
+
+
+    interface OnSelectedItemDialog {
+        fun onFlashMessage(message: String)
+    }
+
+    private fun onClick(message: String) {
+        onClickItem.onFlashMessage(message)
+    }
+
+    fun setOnFlashMessage(onClickItem: OnSelectedItemDialog) {
+        this.onClickItem = onClickItem
     }
 
 }

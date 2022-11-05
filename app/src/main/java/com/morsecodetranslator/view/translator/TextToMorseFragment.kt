@@ -1,13 +1,16 @@
 package com.morsecodetranslator.view.translator
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.morsecodetranslator.R
 import com.morsecodetranslator.common.ViewState
+import com.morsecodetranslator.common.intentFor
 import com.morsecodetranslator.databinding.FragmentTextToMorseBinding
 import com.morsecodetranslator.view.base.BaseFragment
+import com.morsecodetranslator.view.comunication.FlashComunicationActivity
 
 class TextToMorseFragment :
     BaseFragment<FragmentTextToMorseBinding>(FragmentTextToMorseBinding::inflate) {
@@ -68,6 +71,20 @@ class TextToMorseFragment :
         )
         dialog.show(childFragmentManager, "dialog")
 
+        dialog.setOnFlashMessage(object : TranslatedBottomDialog.OnSelectedItemDialog {
+            override fun onFlashMessage(message: String) {
+                navigateToFlashCommunication(message)
+            }
+        })
+
     }
+
+    private fun navigateToFlashCommunication(message: String) {
+        val intent = Intent(requireContext(), FlashComunicationActivity::class.java).apply {
+            putExtra(FlashComunicationActivity.MESSAGE_ARG, message)
+        }
+        startActivity(intent)
+    }
+
 
 }
