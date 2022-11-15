@@ -24,8 +24,6 @@ class TranslatedBottomDialog(val message: String, val isTextToMorse: Boolean) :
             if (isTextToMorse) getString(R.string.text_to_morse_translated)
             else getString(R.string.morse_to_text_translated)
 
-        binding.ivFlash.isVisible = isTextToMorse
-
     }
 
     private fun setActionView() {

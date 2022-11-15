@@ -28,7 +28,7 @@
             />
 
         <activity
-            android:name=".view.comunication.FlashComunicationActivity"
+            android:name=".view.comunication.FlashCommunicationActivity"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:theme="@style/AppTheme"

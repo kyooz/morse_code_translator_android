@@ -1,5 +1,6 @@
 package com.morsecodetranslator.view.translator
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +10,7 @@ import com.morsecodetranslator.common.ViewState
 import com.morsecodetranslator.common.hideKeyboard
 import com.morsecodetranslator.databinding.FragmentMorseToTextBinding
 import com.morsecodetranslator.view.base.BaseFragment
+import com.morsecodetranslator.view.comunication.FlashCommunicationActivity
 
 class MorseToTextFragment :
     BaseFragment<FragmentMorseToTextBinding>(FragmentMorseToTextBinding::inflate) {
@@ -80,7 +82,7 @@ class MorseToTextFragment :
 
                 }
                 is ViewState.Success -> {
-                    showMessageDialog(it.data)
+                    showTranslatedMorseDialog(it.data)
                 }
                 is ViewState.Error -> {
                     toast(it.viewError ?: "Gagal")
@@ -106,7 +108,7 @@ class MorseToTextFragment :
 
     }
 
-    private fun showMessageDialog(message: String) {
+    private fun showTranslatedMorseDialog(message: String) {
 
         val dialog = TranslatedBottomDialog(
             message,
@@ -114,6 +116,20 @@ class MorseToTextFragment :
         )
         dialog.show(childFragmentManager, "dialog")
 
+        dialog.setOnFlashMessage(object : TranslatedBottomDialog.OnSelectedItemDialog {
+            override fun onFlashMessage(message: String) {
+                navigateToFlashCommunication()
+            }
+        })
+
+    }
+
+    private fun navigateToFlashCommunication() {
+        val morse = binding.tvMorse.text.toString()
+
+        val intent = Intent(requireContext(), FlashCommunicationActivity::class.java)
+        intent.putExtra(FlashCommunicationActivity.MESSAGE_ARG, morse.dropLast(1))
+        startActivity(intent)
     }
 
 }

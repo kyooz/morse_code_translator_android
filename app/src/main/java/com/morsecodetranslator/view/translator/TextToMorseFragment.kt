@@ -7,10 +7,9 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.morsecodetranslator.R
 import com.morsecodetranslator.common.ViewState
-import com.morsecodetranslator.common.intentFor
 import com.morsecodetranslator.databinding.FragmentTextToMorseBinding
 import com.morsecodetranslator.view.base.BaseFragment
-import com.morsecodetranslator.view.comunication.FlashComunicationActivity
+import com.morsecodetranslator.view.comunication.FlashCommunicationActivity
 
 class TextToMorseFragment :
     BaseFragment<FragmentTextToMorseBinding>(FragmentTextToMorseBinding::inflate) {
@@ -48,12 +47,9 @@ class TextToMorseFragment :
 
         viewModel.getTextToMorseTranslateState.observe(requireActivity()) {
             when (it) {
-                is ViewState.Loading -> {
-
-                }
-
+                is ViewState.Loading -> {}
                 is ViewState.Success -> {
-                    showMessageDialog(it.data)
+                    showTranslatedMorseDialog(it.data)
                 }
                 is ViewState.Error -> {
                     toast(it.viewError ?: "Gagal")
@@ -63,7 +59,7 @@ class TextToMorseFragment :
 
     }
 
-    private fun showMessageDialog(message: String) {
+    private fun showTranslatedMorseDialog(message: String) {
 
         val dialog = TranslatedBottomDialog(
             message,
@@ -80,16 +76,8 @@ class TextToMorseFragment :
     }
 
     private fun navigateToFlashCommunication(message: String) {
-        setLog("message : $message")
-//        val intent = Intent(requireContext(), FlashComunicationActivity::class.java).apply {
-//            putExtra(FlashComunicationActivity.MESSAGE_ARG, message)
-//        }
-
-        val bundle = Bundle()
-        bundle.putString(FlashComunicationActivity.MESSAGE_ARG, message)
-
-        val intent = Intent(requireContext(), FlashComunicationActivity::class.java)
-        intent.putExtras(bundle)
+        val intent = Intent(requireContext(), FlashCommunicationActivity::class.java)
+        intent.putExtra(FlashCommunicationActivity.MESSAGE_ARG, message)
         startActivity(intent)
     }
 
