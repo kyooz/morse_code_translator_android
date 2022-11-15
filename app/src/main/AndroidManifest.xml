@@ -23,15 +23,15 @@
         </activity>
         <activity
             android:name=".view.translator.TranslatorActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
 
         <activity
             android:name=".view.comunication.FlashComunicationActivity"
-            android:exported="false"
+            android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden"
-            android:theme="@style/AppThemeToolbar"
+            android:theme="@style/AppTheme"
             />
 
     </application>

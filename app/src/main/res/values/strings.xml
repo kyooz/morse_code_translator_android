@@ -3,12 +3,21 @@
 
     <string name="please_input_message">Please input message</string>
     <string name="under_constructor">Under Construction</string>
-    <string name="core_copied">Copied</string>
+    <string name="core_copied">Copied to clipboard</string>
+    <string name="core_ok">Ok</string>
 
     <string name="lorem_title">Lorem Ipsum</string>
     <string name="lorem_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</string>
 
     <string name="copy_message">Copy Message</string>
     <string name="share_message">Share Message</string>
+
+    <string name="text_to_morse_translated">Text to Morse Translated</string>
+    <string name="morse_to_text_translated">Morse to Text Translated</string>
+
+    <!-- ALERT   -->
+    <string name="flash_not_available_in_this_device">Flash not available in this device</string>
+
+
 
 </resources>

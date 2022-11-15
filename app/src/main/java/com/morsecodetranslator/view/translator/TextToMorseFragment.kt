@@ -80,10 +80,21 @@ class TextToMorseFragment :
     }
 
     private fun navigateToFlashCommunication(message: String) {
-        val intent = Intent(requireContext(), FlashComunicationActivity::class.java).apply {
-            putExtra(FlashComunicationActivity.MESSAGE_ARG, message)
-        }
+        setLog("message : $message")
+//        val intent = Intent(requireContext(), FlashComunicationActivity::class.java).apply {
+//            putExtra(FlashComunicationActivity.MESSAGE_ARG, message)
+//        }
+
+        val bundle = Bundle()
+        bundle.putString(FlashComunicationActivity.MESSAGE_ARG, message)
+
+        val intent = Intent(requireContext(), FlashComunicationActivity::class.java)
+        intent.putExtras(bundle)
         startActivity(intent)
+    }
+
+    private fun setLog(msg: String) {
+        Log.e("morse", msg)
     }
 
 

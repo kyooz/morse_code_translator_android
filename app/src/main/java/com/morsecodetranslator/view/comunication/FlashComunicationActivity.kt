@@ -26,6 +26,7 @@ class FlashComunicationActivity : BaseActivity() {
 
     companion object {
         val MESSAGE_ARG = "MESSAGE"
+
         private val DOT = '.'
         private val STRIP = '-'
         private val SPACE = '/'
@@ -41,15 +42,11 @@ class FlashComunicationActivity : BaseActivity() {
         super.onCreate(savedInstanceState, persistentState)
         setContentView(binding.root)
 
+        setLog("isFlashAvailable : ${isFlashAvailable()}")
+
         initView()
         setUpFlash()
-        val message = intent.getStringExtra(MESSAGE_ARG)
-
-        setLog("message result : $message")
-
-        if (isFlashAvailable()) {
-            startFlashMessage(message ?: "")
-        }
+        getIntentData()
 
     }
 
@@ -60,6 +57,19 @@ class FlashComunicationActivity : BaseActivity() {
 //            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_white_24)
 //
 //        }
+
+    }
+
+    private fun getIntentData() {
+
+        val message = intent.extras?.getString(MESSAGE_ARG)
+
+        setLog("message result : $message")
+        setLog("isFlashAvailable : ${isFlashAvailable()}")
+
+        if (isFlashAvailable()) {
+            startFlashMessage(message ?: "")
+        }
 
     }
 
@@ -122,10 +132,12 @@ class FlashComunicationActivity : BaseActivity() {
     }
 
     private fun turnOnFlash() {
+        setLog("turnOnFlash")
         switchFlashLight(true)
     }
 
     private fun turnOffFlash() {
+        setLog("turnOffFlash")
         switchFlashLight(false)
     }
 
@@ -143,13 +155,13 @@ class FlashComunicationActivity : BaseActivity() {
         val alert = AlertDialog.Builder(this)
             .create()
         alert.setTitle("Oops!")
-        alert.setMessage("Flash not available in this device...")
-        alert.setButton(DialogInterface.BUTTON_POSITIVE, "OK") { _, _ -> finish() }
+        alert.setMessage(getString(R.string.flash_not_available_in_this_device))
+        alert.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.core_ok)) { _, _ -> finish() }
         alert.show()
     }
 
     private fun setLog(msg: String) {
-        Log.e("Flash", msg)
+        Log.e("flash", msg)
     }
 
 }
