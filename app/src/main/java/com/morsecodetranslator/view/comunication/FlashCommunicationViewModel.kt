@@ -20,31 +20,28 @@ class FlashCommunicationViewModel : ViewModel() {
     private val SPACE_FLASH_OFF_DURATION: Long = 2000
     private val DEFAULT_FLASH_OFF_DURATION: Long = 500
 
+    var countDuration : Long = 0
+
     fun startFlash(morse: String) {
         viewModelScope.launch {
             try {
+
+                calculateFlashDuration(morse)
 
                 // remove whitespace
                 val message = morse.replace("\\s".toRegex(), "")
                 val morseArray = message.toCharArray()
 
-                setLog("morseArray size : ${morseArray.size}")
-
                 morseArray.forEach {
-
-                    setLog("code : $it")
                     if (it != SPACE) {
-                        setLog("flash on ${durationFlashOn(it)}")
                         flashState.postValue(ViewState.Success(true))
                         delay(durationFlashOn(it))
                     }
-                    setLog("flash off")
                     flashState.postValue(ViewState.Success(false))
                     delay(durationFlashOff(it))
                 }
 
             } catch (error: Exception) {
-                setLog("error : ${error.message}")
                 flashState.postValue(ViewState.Error(error.message))
             }
         }
@@ -64,8 +61,26 @@ class FlashCommunicationViewModel : ViewModel() {
         }
     }
 
-    private fun setLog(msg: String) {
-        Log.e("flash", msg)
+    private fun calculateFlashDuration(morse: String) {
+
+        viewModelScope.launch {
+            try {
+                // remove whitespace
+                val message = morse.replace("\\s".toRegex(), "")
+                val morseArray = message.toCharArray()
+
+                morseArray.forEach {
+                    if (it != SPACE) {
+                        countDuration += durationFlashOn(it)
+                    }
+                    countDuration += durationFlashOff(it)
+                }
+
+            } catch (error: Exception) {
+
+            }
+        }
+
     }
 
 }

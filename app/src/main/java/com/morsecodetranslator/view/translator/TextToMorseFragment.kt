@@ -81,9 +81,4 @@ class TextToMorseFragment :
         startActivity(intent)
     }
 
-    private fun setLog(msg: String) {
-        Log.e("morse", msg)
-    }
-
-
 }

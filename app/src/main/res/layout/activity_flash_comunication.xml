@@ -1,25 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
+    android:background="@color/black"
     >
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/_56sdp"-->
-<!--        app:title="Flash Communication"-->
-<!--        app:fontTitle="@font/poppins_medium" />-->
-
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FLASH COMMUNICATION"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flash_duration"
+            style="@style/textBody2"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            />
+
+        <TextView
+            android:id="@+id/tvDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            style="@style/textH1"
+            android:textSize="@dimen/_60ssp"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivFlashLight"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/ic_flash_light_off"
+        android:layout_centerInParent="true"
         />
 
-
-
-</LinearLayout>
+</RelativeLayout>

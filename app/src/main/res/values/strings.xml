@@ -11,6 +11,8 @@
 
     <string name="copy_message">Copy Message</string>
     <string name="share_message">Share Message</string>
+    <string name="flash_duration">Flash Duration</string>
+    <string name="done">done</string>
 
     <string name="text_to_morse_translated">Text to Morse Translated</string>
     <string name="morse_to_text_translated">Morse to Text Translated</string>

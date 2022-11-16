@@ -8,19 +8,23 @@ import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.morsecodetranslator.R
 import com.morsecodetranslator.common.ViewState
 import com.morsecodetranslator.common.viewBinding
 import com.morsecodetranslator.databinding.ActivityFlashComunicationBinding
 import com.morsecodetranslator.view.base.BaseActivity
-import kotlinx.coroutines.*
+import android.os.CountDownTimer
+
 
 class FlashCommunicationActivity : BaseActivity() {
 
     private val binding by viewBinding(ActivityFlashComunicationBinding::inflate)
     private lateinit var viewModel : FlashCommunicationViewModel
+
+    // data
+    private var isTimerStart = false
+    private var morseMessage: String? = ""
 
     // flash permission
     private lateinit var cameraManager: CameraManager
@@ -39,6 +43,7 @@ class FlashCommunicationActivity : BaseActivity() {
         setUpFlash()
         startObservingData()
         getIntentData()
+        initListener()
 
     }
 
@@ -49,12 +54,20 @@ class FlashCommunicationActivity : BaseActivity() {
 
     private fun getIntentData() {
 
-        val message = intent.getStringExtra(MESSAGE_ARG)
+        morseMessage = intent.getStringExtra(MESSAGE_ARG)
 
         if (isFlashAvailable()) {
-            viewModel.startFlash(message ?: "")
+            viewModel.startFlash(morseMessage ?: "")
         } else {
             showNoFlashNotAvailable()
+        }
+
+    }
+
+    private fun initListener() {
+
+        binding.ivFlashLight.setOnClickListener {
+            finish()
         }
 
     }
@@ -64,6 +77,18 @@ class FlashCommunicationActivity : BaseActivity() {
         viewModel.flashState.observe(this) {
             when(it) {
                 is ViewState.Success -> {
+
+                    // check timer start
+                    // if timer countdown not start
+                    // start timer count down
+                    if (!isTimerStart) {
+                        startTimerCountDown(viewModel.countDuration)
+                        // update status timer
+                        // so that countdown doesn't run anymore
+                        isTimerStart = true
+                    }
+
+                    // flash
                     if (it.data) {
                         flashOn()
                     } else {
@@ -87,6 +112,21 @@ class FlashCommunicationActivity : BaseActivity() {
         } else {
             showNoFlashNotAvailable()
         }
+
+    }
+
+    private fun startTimerCountDown(secondDuration: Long) {
+        object : CountDownTimer(secondDuration, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                val duration = millisUntilFinished / 1000
+                binding.tvDuration.text = "$duration"
+            }
+
+            override fun onFinish() {
+                binding.tvDuration.text = getString(R.string.done)
+            }
+        }.start()
 
     }
 
