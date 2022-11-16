@@ -11,7 +11,7 @@
         <item name="tabStyle">@style/AppTablayoutTheme</item>
     </style>
 
-    <style name="AppThemeToolbar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+    <style name="AppThemeToolbar" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

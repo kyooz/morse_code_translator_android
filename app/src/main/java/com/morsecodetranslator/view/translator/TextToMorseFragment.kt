@@ -1,5 +1,6 @@
 package com.morsecodetranslator.view.translator
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +9,7 @@ import com.morsecodetranslator.R
 import com.morsecodetranslator.common.ViewState
 import com.morsecodetranslator.databinding.FragmentTextToMorseBinding
 import com.morsecodetranslator.view.base.BaseFragment
+import com.morsecodetranslator.view.comunication.FlashCommunicationActivity
 
 class TextToMorseFragment :
     BaseFragment<FragmentTextToMorseBinding>(FragmentTextToMorseBinding::inflate) {
@@ -45,12 +47,9 @@ class TextToMorseFragment :
 
         viewModel.getTextToMorseTranslateState.observe(requireActivity()) {
             when (it) {
-                is ViewState.Loading -> {
-
-                }
-
+                is ViewState.Loading -> {}
                 is ViewState.Success -> {
-                    showMessageDialog(it.data)
+                    showTranslatedMorseDialog(it.data)
                 }
                 is ViewState.Error -> {
                     toast(it.viewError ?: "Gagal")
@@ -60,7 +59,7 @@ class TextToMorseFragment :
 
     }
 
-    private fun showMessageDialog(message: String) {
+    private fun showTranslatedMorseDialog(message: String) {
 
         val dialog = TranslatedBottomDialog(
             message,
@@ -68,6 +67,23 @@ class TextToMorseFragment :
         )
         dialog.show(childFragmentManager, "dialog")
 
+        dialog.setOnFlashMessage(object : TranslatedBottomDialog.OnSelectedItemDialog {
+            override fun onFlashMessage(message: String) {
+                navigateToFlashCommunication(message)
+            }
+        })
+
     }
+
+    private fun navigateToFlashCommunication(message: String) {
+        val intent = Intent(requireContext(), FlashCommunicationActivity::class.java)
+        intent.putExtra(FlashCommunicationActivity.MESSAGE_ARG, message)
+        startActivity(intent)
+    }
+
+    private fun setLog(msg: String) {
+        Log.e("morse", msg)
+    }
+
 
 }
