@@ -36,7 +36,7 @@ class TextToMorseFragment :
             if (message.isEmpty()) {
                 toast(getString(R.string.please_input_message))
             } else {
-                viewModel.textToMorseTranslate(message)
+                viewModel.textIntoMorseCodeTranslate(message)
             }
 
         }
