@@ -1,20 +1,17 @@
 package com.morsecodetranslator.view.translator
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.morsecodetranslator.common.ViewState
-import com.morsecodetranslator.data.TranslatorData
+import com.morsecodetranslator.data.MorseModel
+import com.morsecodetranslator.data.getMorseDatabase
 import kotlinx.coroutines.launch
-import java.util.*
 
 class TranslatorViewModel : ViewModel() {
 
     val getTextToMorseTranslateState = MutableLiveData<ViewState<String>>()
     val getMorseToTextTranslateState = MutableLiveData<ViewState<String>>()
-
-    private val translatorData = TranslatorData()
 
     fun morseToTextTranslate(morseMessage: String) {
 
@@ -25,8 +22,9 @@ class TranslatorViewModel : ViewModel() {
 
                 val words = morseMessage.split(" ")
                 words.forEach {
-                    val data = translatorData.checkMorseDataByCode(it)
-                    translated += data
+                    val morse = findMorseByCode(it)
+                    val code = morse?.code ?: '?'
+                    translated += code
                 }
 
                 getMorseToTextTranslateState.postValue(ViewState.Success(translated))
@@ -48,8 +46,9 @@ class TranslatorViewModel : ViewModel() {
 
                 val messageArray = textMessage.toCharArray()
                 messageArray.forEach {
-                    val data = translatorData.checkMorseDataByChar(it.uppercaseChar())
-                    translated += if (translated.isEmpty()) data else " $data"
+                    val morse = findMorseByKey(it)
+                    val key = morse?.key ?: '?'
+                    translated += if (translated.isEmpty()) key else " $key"
                 }
 
                 getTextToMorseTranslateState.postValue(ViewState.Success(translated))
@@ -60,6 +59,29 @@ class TranslatorViewModel : ViewModel() {
 
         }
 
+    }
+
+    private fun findMorseByKey(key: Char): MorseModel? {
+        return try {
+            val morse = getMorseDatabase().find {
+                key.uppercaseChar() == it.key
+            }
+            return morse
+        } catch (error: Exception) {
+            null
+        }
+    }
+
+    private fun findMorseByCode(code: String): MorseModel? {
+
+        return try {
+            val morse = getMorseDatabase().find {
+                code.uppercase() == it.code
+            }
+            return morse
+        } catch (error: Exception) {
+            null
+        }
     }
 
 }
