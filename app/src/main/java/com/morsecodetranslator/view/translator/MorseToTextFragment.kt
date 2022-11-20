@@ -67,7 +67,7 @@ class MorseToTextFragment :
                 toast(getString(R.string.please_input_message))
             } else {
                 val data = message.dropLast(1)
-                viewModel.morseToTextTranslate(data)
+                viewModel.morseCodeIntoTextTranslate(data)
             }
 
         }

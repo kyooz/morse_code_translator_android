@@ -13,18 +13,18 @@ class TranslatorViewModel : ViewModel() {
     val getTextToMorseTranslateState = MutableLiveData<ViewState<String>>()
     val getMorseToTextTranslateState = MutableLiveData<ViewState<String>>()
 
-    fun morseToTextTranslate(morseMessage: String) {
+    fun morseCodeIntoTextTranslate(message: String) {
 
         viewModelScope.launch {
 
             try {
                 var translated = ""
 
-                val words = morseMessage.split(" ")
+                val words = message.split(" ")
                 words.forEach {
                     val morse = findMorseByCode(it)
-                    val code = morse?.code ?: '?'
-                    translated += code
+                    val key = morse?.key ?: '?'
+                    translated += key
                 }
 
                 getMorseToTextTranslateState.postValue(ViewState.Success(translated))
@@ -36,7 +36,7 @@ class TranslatorViewModel : ViewModel() {
 
     }
 
-    fun textToMorseTranslate(textMessage: String) {
+    fun textIntoMorseCodeTranslate(message: String) {
 
         viewModelScope.launch {
 
@@ -44,11 +44,11 @@ class TranslatorViewModel : ViewModel() {
 
                 var translated = ""
 
-                val messageArray = textMessage.toCharArray()
+                val messageArray = message.toCharArray()
                 messageArray.forEach {
                     val morse = findMorseByKey(it)
-                    val key = morse?.key ?: '?'
-                    translated += if (translated.isEmpty()) key else " $key"
+                    val code = morse?.code ?: '?'
+                    translated += if (translated.isEmpty()) code else " $code"
                 }
 
                 getTextToMorseTranslateState.postValue(ViewState.Success(translated))
