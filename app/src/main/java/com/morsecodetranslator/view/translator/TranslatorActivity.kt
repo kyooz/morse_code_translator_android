@@ -1,20 +1,18 @@
 package com.morsecodetranslator.view.translator
 
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.morsecodetranslator.R
-import com.morsecodetranslator.common.ViewState
 import com.morsecodetranslator.common.viewBinding
 import com.morsecodetranslator.databinding.ActivityTranslatorBinding
-import com.morsecodetranslator.view.base.BaseActivity
 
 
-class TranslatorActivity : BaseActivity() {
+class TranslatorActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityTranslatorBinding::inflate)
     private lateinit var viewModel: TranslatorViewModel

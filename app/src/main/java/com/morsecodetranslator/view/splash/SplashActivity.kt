@@ -1,16 +1,14 @@
 package com.morsecodetranslator.view.splash
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.morsecodetranslator.R
+import androidx.appcompat.app.AppCompatActivity
 import com.morsecodetranslator.common.startActivityLeftTransition
 import com.morsecodetranslator.common.viewBinding
 import com.morsecodetranslator.databinding.ActivitySplashBinding
-import com.morsecodetranslator.view.base.BaseActivity
 import com.morsecodetranslator.view.translator.TranslatorActivity
 import kotlinx.coroutines.*
 
-class SplashActivity : BaseActivity() {
+class SplashActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivitySplashBinding::inflate)
 

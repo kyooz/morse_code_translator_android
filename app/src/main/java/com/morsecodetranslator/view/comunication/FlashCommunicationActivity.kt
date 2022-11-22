@@ -13,11 +13,11 @@ import com.morsecodetranslator.R
 import com.morsecodetranslator.common.ViewState
 import com.morsecodetranslator.common.viewBinding
 import com.morsecodetranslator.databinding.ActivityFlashComunicationBinding
-import com.morsecodetranslator.view.base.BaseActivity
 import android.os.CountDownTimer
+import androidx.appcompat.app.AppCompatActivity
 
 
-class FlashCommunicationActivity : BaseActivity() {
+class FlashCommunicationActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityFlashComunicationBinding::inflate)
     private lateinit var viewModel : FlashCommunicationViewModel
