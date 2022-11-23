@@ -6,13 +6,15 @@ import android.view.View
 import androidx.core.view.isVisible
 import com.morsecodetranslator.R
 import com.morsecodetranslator.common.copyToClipboard
+import com.morsecodetranslator.data.KurirInterface
 import com.morsecodetranslator.databinding.DialogBottomTranslatedBinding
 import com.morsecodetranslator.view.base.BaseFragmentBottomDialog
 
 class TranslatedBottomDialog(val message: String, val isTextToMorse: Boolean) :
     BaseFragmentBottomDialog<DialogBottomTranslatedBinding>(DialogBottomTranslatedBinding::inflate) {
 
-    lateinit var onClickItem: OnSelectedItemDialog
+    lateinit var kurirInterface: KurirInterface
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +43,7 @@ class TranslatedBottomDialog(val message: String, val isTextToMorse: Boolean) :
         }
 
         binding.ivFlash.setOnClickListener {
-            onClickItem.onFlashMessage(message)
+            kurirInterface.onMenyimpanPesan(message)
             dismiss()
         }
 
@@ -59,16 +61,13 @@ class TranslatedBottomDialog(val message: String, val isTextToMorse: Boolean) :
     }
 
 
-    interface OnSelectedItemDialog {
-        fun onFlashMessage(message: String)
-    }
-
-    private fun onClick(message: String) {
-        onClickItem.onFlashMessage(message)
-    }
-
-    fun setOnFlashMessage(onClickItem: OnSelectedItemDialog) {
-        this.onClickItem = onClickItem
+    fun getMenerimaPesan(kurir : KurirInterface){
+        this.kurirInterface = kurir
     }
 
 }
+
+// 1.membuat interface (onMenyimpanPesan)
+// 2.lateinit var kurirInterface: KurirInterface
+// 3.kurirInterface.onMenyimpanPesan(message)
+// 4.fun getMenerimaPesan

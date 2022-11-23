@@ -7,6 +7,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.morsecodetranslator.R
 import com.morsecodetranslator.common.ViewState
+import com.morsecodetranslator.data.KurirInterface
 import com.morsecodetranslator.databinding.FragmentTextToMorseBinding
 import com.morsecodetranslator.view.base.BaseFragment
 import com.morsecodetranslator.view.comunication.FlashCommunicationActivity
@@ -67,8 +68,8 @@ class TextToMorseFragment :
         )
         dialog.show(childFragmentManager, "dialog")
 
-        dialog.setOnFlashMessage(object : TranslatedBottomDialog.OnSelectedItemDialog {
-            override fun onFlashMessage(message: String) {
+        dialog.getMenerimaPesan(object : KurirInterface {
+            override fun onMenyimpanPesan(message: String) {
                 navigateToFlashCommunication(message)
             }
         })
